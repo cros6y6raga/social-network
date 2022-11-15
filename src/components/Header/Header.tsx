@@ -4,7 +4,7 @@ import s from './Header.module.css'
 export const Header = () => {
     return (
         <header className={s.header}>
-            <img src='https://www.tailorbrands.com/wp-content/uploads/2020/07/mcdonalds-logo.jpg'/>
+            <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png'/>
         </header>
     );
 };

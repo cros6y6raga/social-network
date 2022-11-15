@@ -8,7 +8,7 @@ type PostType = {
 export const Post = (props: PostType) => {
     return (
         <div className={s.item}>
-            <img src='https://lwlies.com/wp-content/uploads/2017/04/avatar-2009.jpg'/>
+            <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/2048px-Angular_full_color_logo.svg.png'/>
             {props.message}
             <div>
                 <span>like-</span>{props.likesCount}

@@ -5,7 +5,7 @@ import {MyPosts} from "./MyPosts/MyPosts";
 export  const Profile = () => {
     return (
         <div>
-            <div><img src='https://www.w3schools.com/w3css/img_lights.jpg'/></div>
+            <div><img src='https://www.positivethinking.tech/wp-content/uploads/2021/01/Logo-Vuejs.png'/></div>
             <div>
                 ava+descr
             </div>
