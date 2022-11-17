@@ -1,18 +1,19 @@
 import React from 'react';
 import s from './Dialogs.module.css';
+import {NavLink} from "react-router-dom";
 
 export const Dialogs = () => {
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 <div className={s.dialog + ' ' + s.active}>
-                    React
+                    <NavLink to='/dialogs/1'>React</NavLink>
                 </div>
                 <div className={s.dialog}>
-                    Angular
+                    <NavLink to='/dialogs/2'>Angular</NavLink>
                 </div>
                 <div className={s.dialog}>
-                    Vue
+                    <NavLink to='/dialogs/3'>Vue</NavLink>
                 </div>
             </div>
             <div className={s.messages}>
