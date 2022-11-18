@@ -2,24 +2,34 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import {NavLink} from "react-router-dom";
 
+type DialogStringType = {
+    name: string,
+    id: string
+}
+type MessageType = {
+    message: string
+}
+const DialogItem = (props: DialogStringType) => {
+    let path = '/dialogs/' + props.id
+    return <div className={s.dialog + ' ' + s.active}>
+        <NavLink to={path}>{props.name}</NavLink>
+    </div>
+}
+const Message = (props: MessageType) => {
+    return <div className={s.message}>{props.message}</div>
+}
 export const Dialogs = () => {
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                <div className={s.dialog + ' ' + s.active}>
-                    <NavLink to='/dialogs/1'>React</NavLink>
-                </div>
-                <div className={s.dialog}>
-                    <NavLink to='/dialogs/2'>Angular</NavLink>
-                </div>
-                <div className={s.dialog}>
-                    <NavLink to='/dialogs/3'>Vue</NavLink>
-                </div>
+                <DialogItem name='React' id='1'/>
+                <DialogItem name='Angular' id='2'/>
+                <DialogItem name='Vue' id='3'/>
             </div>
             <div className={s.messages}>
-                <div className={s.message}>My name is react</div>
-                <div className={s.message}>My name is angular</div>
-                <div className={s.message}>My name is vue</div>
+                <Message message='My name is react'/>
+                <Message message='My name is angular'/>
+                <Message message='My name is vue'/>
             </div>
         </div>
     );
