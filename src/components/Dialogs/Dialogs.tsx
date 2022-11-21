@@ -3,7 +3,7 @@ import s from './Dialogs.module.css';
 import {NavLink} from "react-router-dom";
 
 type DialogStringType = {
-    name:string
+    name: string
     id: number
 }
 
@@ -20,27 +20,25 @@ const Message = (props: MessageType) => {
     return <div className={s.message}>{props.message}</div>
 }
 export const Dialogs = () => {
-    let dialogsData = [
+    let dialogs = [
         {id: 1, name: 'React'},
         {id: 2, name: 'Angular'},
         {id: 3, name: 'Vue'},
     ]
-    let messagesData = [
+    let messages = [
         {id: 1, message: 'My name is react'},
         {id: 2, message: 'My name is angular'},
         {id: 3, message: 'My name is vue'},
     ]
+    let dialogsElement = dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
+    let messagesElement = messages.map(m => <DialogItem name={m.message} id={m.id}/>)
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                <DialogItem name={dialogsData[0].name} id={dialogsData[0].id}/>
-                <DialogItem name={dialogsData[1].name} id={dialogsData[1].id}/>
-                <DialogItem name={dialogsData[2].name} id={dialogsData[2].id}/>
+                {dialogsElement}
             </div>
             <div className={s.messages}>
-                <Message message={messagesData[0].message}/>
-                <Message message={messagesData[1].message}/>
-                <Message message={messagesData[2].message}/>
+                {messagesElement}
             </div>
         </div>
     );
