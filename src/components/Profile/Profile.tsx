@@ -2,25 +2,20 @@ import React from 'react';
 import s from './Profile.module.css'
 import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
+import {PostType} from "../../App";
 
 
-export type PostType = {
-    id: number
-    message:string
-    likesCount: string
+type PropsProfile = {
+    posts: PostType[]
 }
 
 
-export const Profile = () => {
+export const Profile = (props: PropsProfile) => {
 
-    let posts: PostType[] = [
-        {id: 1, message: 'Hello', likesCount: '23'},
-        {id: 2, message: 'Angular is the coolest', likesCount: '40'},
-    ]
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts posts={posts}/>
+            <MyPosts posts={props.posts}/>
         </div>
     );
 };
