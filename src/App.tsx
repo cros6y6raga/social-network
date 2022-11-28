@@ -5,17 +5,13 @@ import {Navbar} from "./components/Navbar/Navbar";
 import {Profile} from "./components/Profile/Profile";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
+import {PostType} from "./index";
 
-export type PostType = {
-    id: number
-    message:string
-    likesCount: string
+type PropsApp={
+    posts: PostType[]
 }
-const App = () => {
-    let posts: PostType[] = [
-        {id: 1, message: 'Hello', likesCount: '23'},
-        {id: 2, message: 'Angular is the coolest', likesCount: '40'},
-    ]
+const App = (props:PropsApp) => {
+
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
@@ -25,7 +21,7 @@ const App = () => {
                     {/*<Route path='/dialogs' component={Dialogs}/>*/}
                     {/*<Route path='/profile' component={Profile}/>*/}
                     <Route path='/dialogs' render={() => <Dialogs/>}/>
-                    <Route path='/profile' render={() => <Profile posts={posts}/>}/>
+                    <Route path='/profile' render={() => <Profile posts={props.posts}/>}/>
                     <Route path='/news'/>
                     <Route path='/music'/>
                     <Route path='/settings'/>
