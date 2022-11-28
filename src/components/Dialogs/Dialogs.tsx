@@ -20,7 +20,7 @@ export const Dialogs = () => {
         {id: 3, message: 'My name is vue'},
     ]
     let dialogsElement = dialogs.map(d => <DialogItem name={d.name} id={d.id}/>)
-    let messagesElement = messages.map(m => <DialogItem name={m.message} id={m.id}/>)
+    let messagesElement = messages.map(m => <Message message={m.message} id={m.id}/>)
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
