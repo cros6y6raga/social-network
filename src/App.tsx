@@ -6,6 +6,7 @@ import {Profile} from "./components/Profile/Profile";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
 
+
 const App = () => {
     return (
         <BrowserRouter>
@@ -13,8 +14,10 @@ const App = () => {
                 <Header/>
                 <Navbar/>
                 <div className={'app-wrapper-content'}>
-                    <Route exact path='/dialogs' component={Dialogs}/>
-                    <Route path='/profile' component={Profile}/>
+                    {/*<Route path='/dialogs' component={Dialogs}/>*/}
+                    {/*<Route path='/profile' component={Profile}/>*/}
+                    <Route path='/dialogs' render={() => <Dialogs/>}/>
+                    <Route path='/profile' render={() => <Profile/>}/>
                     <Route path='/news'/>
                     <Route path='/music'/>
                     <Route path='/settings'/>
