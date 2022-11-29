@@ -12,7 +12,6 @@ type AppType = {
 }
 const App = (props: AppType) => {
     return (
-        <BrowserRouter>
             <div className='app-wrapper'>
                 <Header/>
                 <Navbar/>
@@ -24,7 +23,6 @@ const App = (props: AppType) => {
                     <Route path='/settings'/>
                 </div>
             </div>
-        </BrowserRouter>
     );
 }
 
