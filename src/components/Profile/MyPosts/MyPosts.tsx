@@ -3,16 +3,12 @@ import s from './MyPosts.module.css'
 import {Post} from "./Post/Post";
 import {PostType} from "../../../redux/state";
 
-
-
 type PropsType = {
     posts: PostType[]
 }
 
-
-export const MyPosts = (props:PropsType) => {
-
-    let postsElements = props.posts.map(p=>  <Post message={p.message} likesCount={p.likesCount}/>)
+export const MyPosts = (props: PropsType) => {
+    let postsElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>

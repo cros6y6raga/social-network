@@ -23,11 +23,6 @@ export type MessagesPageType = {
     dialogs: DialogsType[]
 }
 
-// export type DialogPageType = {
-//     dialogs: DialogsType[]
-//     messages: MessagesType[]
-// }
-
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: MessagesPageType
