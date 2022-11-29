@@ -17,14 +17,20 @@ export type MessagesType = {
 export type ProfilePageType = {
     posts: PostType[]
 }
-export type DialogPageType = {
-    dialogs: DialogsType[]
+
+export type MessagesPageType = {
     messages: MessagesType[]
+    dialogs: DialogsType[]
 }
+
+// export type DialogPageType = {
+//     dialogs: DialogsType[]
+//     messages: MessagesType[]
+// }
 
 export type RootStateType = {
     profilePage: ProfilePageType
-    dialogsPage: DialogPageType
+    dialogsPage: MessagesPageType
 }
 
 export let state: RootStateType = {
@@ -32,7 +38,7 @@ export let state: RootStateType = {
         posts: [
             {id: 1, message: 'Hello', likesCount: '23'},
             {id: 2, message: 'Angular is the coolest', likesCount: '40'},
-        ]
+        ],
     },
     dialogsPage: {
         dialogs: [
@@ -45,5 +51,5 @@ export let state: RootStateType = {
             {id: 2, message: 'My name is angular'},
             {id: 3, message: 'My name is vue'},
         ]
-    },
+    }
 }
