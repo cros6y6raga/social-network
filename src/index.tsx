@@ -5,12 +5,7 @@ import App from "./App";
 import {state} from "./redux/state";
 import {addPost} from "./redux/state";
 import {BrowserRouter} from "react-router-dom";
+import {rerenderEntireTree} from "./render";
 
-//addPost('SamuraiJS.com')
 
-ReactDOM.render(
-    <BrowserRouter>
-        <App state={state} addPostCallback={addPost} />
-    </BrowserRouter>,
-    document.getElementById('root')
-);
+rerenderEntireTree(state)

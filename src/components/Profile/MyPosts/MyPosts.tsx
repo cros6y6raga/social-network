@@ -15,6 +15,7 @@ export const MyPosts = (props: PropsType) => {
        // alert(newPostEl.current?.value)
         if (newPostEl.current){
             props.addPostCallback(newPostEl.current.value)
+            newPostEl.current.value=''
         }
     }
     return (
