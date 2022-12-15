@@ -1,5 +1,13 @@
 import React from 'react';
-import {rerenderEntireTree} from "../render";
+
+
+let onChange = () => {
+    console.log('hello')
+}
+
+export const subscribe = (observer: () => void) => {
+    onChange = observer
+}
 
 export type PostType = {
     id: number
@@ -17,7 +25,7 @@ export type MessagesType = {
 
 export type ProfilePageType = {
     posts: PostType[]
-    newPostText:string
+    newPostText: string
 }
 
 export type MessagesPageType = {
@@ -37,7 +45,7 @@ export let state: RootStateType = {
             {id: 1, message: 'Hello', likesCount: 10},
             {id: 2, message: 'Angular is the coolest', likesCount: 20},
         ],
-        newPostText:''
+        newPostText: ''
     },
     dialogsPage: {
         dialogs: [
@@ -59,11 +67,11 @@ export let addPost = () => {
         likesCount: 0,
     }
     state.profilePage.posts.push(newPost)
-    state.profilePage.newPostText=''
-    rerenderEntireTree(state)
+    state.profilePage.newPostText = ''
+    onChange()
 }
 
 export let updateNewPostText = (newText: string) => {
-    state.profilePage.newPostText=newText
-    rerenderEntireTree(state)
+    state.profilePage.newPostText = newText
+    onChange()
 }
