@@ -33,11 +33,12 @@ export type RootStateType = {
 
 export type StoreType = {
     _state: RootStateType
+    _onChange: () => void
     updateNewPostText: (newText: string) => void
     addPost: (postText: string) => void
-    _onChange: () => void
     subscribe: (callback: () => void) => void
     getState: () => RootStateType
+    dispatch: (action: any) => void
 }
 
 export const store: StoreType = {
@@ -62,6 +63,15 @@ export const store: StoreType = {
             ]
         }
     },
+    _onChange() {
+        console.log('state changed')
+    },
+    getState() {
+        return this._state
+    },
+    subscribe(callback) {
+        this._onChange = callback
+    },
     updateNewPostText(newText: string) {
         this._state.profilePage.newPostText = newText
         this._onChange()
@@ -75,14 +85,7 @@ export const store: StoreType = {
         this._state.profilePage.posts.push(newPost)
         this._onChange()
     },
-    _onChange() {
-        console.log('state changed')
-    },
+    dispatch(action) {
 
-    subscribe(callback) {
-        this._onChange = callback
-    },
-    getState() {
-        return this._state
     }
 }
