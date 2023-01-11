@@ -38,8 +38,19 @@ export type StoreType = {
     addPost: (postText: string) => void
     subscribe: (callback: () => void) => void
     getState: () => RootStateType
-    dispatch: (action: any) => void
+    dispatch: (action: ActionsTypes) => void
 }
+
+type AddPostActionType={
+    type:'ADD-POST'
+    postText:string
+}
+type ChangeNewTextActionType={
+    type:'CHANGE-NEW-TEXT'
+    newText:string
+}
+
+export type ActionsTypes = AddPostActionType | ChangeNewTextActionType
 
 export const store: StoreType = {
     _state: {

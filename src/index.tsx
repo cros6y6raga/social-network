@@ -7,19 +7,19 @@ import {BrowserRouter} from "react-router-dom";
 import {store} from "./redux/state";
 
 //addPost('SamuraiJS.com')
-type PropsType={
-    store:StoreType
-}
 
-export let rerenderEntireTree = ( ) => {
+export let rerenderEntireTree = () => {
 
     ReactDOM.render(
         <BrowserRouter>
-            <App state={store.getState()} addPostCallback={store.addPost.bind(store)}
-                 updateNewPostText={store.updateNewPostText.bind(store)}/>
+            <App state={store.getState()}
+                 addPostCallback={store.addPost.bind(store)}
+                 updateNewPostText={store.updateNewPostText.bind(store)}
+                 dispatch={store.dispatch.bind(store)}
+            />
         </BrowserRouter>,
         document.getElementById('root'));
 }
 rerenderEntireTree()
 
-store.subscribe( rerenderEntireTree)
+store.subscribe(rerenderEntireTree)
