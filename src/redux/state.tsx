@@ -86,6 +86,17 @@ export const store: StoreType = {
         this._onChange()
     },
     dispatch(action) {
-
+        if (action.type==='ADD-POST') {
+            const newPost: PostType = {
+                id: new Date().getTime(),
+                message: action.postText,
+                likesCount: 0,
+            }
+            this._state.profilePage.posts.push(newPost)
+            this._onChange()
+        } else if (action.type==='CHANGE-NEW-TEXT'){
+            this._state.profilePage.newPostText = action.newText
+            this._onChange()
+        }
     }
 }
