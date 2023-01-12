@@ -13,8 +13,6 @@ export let rerenderEntireTree = () => {
     ReactDOM.render(
         <BrowserRouter>
             <App state={store.getState()}
-                 addPostCallback={store.addPost.bind(store)}
-                 updateNewPostText={store.updateNewPostText.bind(store)}
                  dispatch={store.dispatch.bind(store)}
             />
         </BrowserRouter>,

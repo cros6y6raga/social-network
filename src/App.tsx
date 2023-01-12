@@ -9,8 +9,6 @@ import {ActionsTypes, RootStateType, StoreType} from "./redux/state";
 
 type AppType = {
     state: RootStateType
-    addPostCallback: (postMessage: string) => void
-    updateNewPostText: (newText: string) => void
     dispatch:(action: ActionsTypes)=>void
 
 }
@@ -22,8 +20,7 @@ const App = (props: AppType) => {
             <div className={'app-wrapper-content'}>
                 <Route path='/dialogs' render={() => <Dialogs state={props.state.dialogsPage}/>}/>
                 <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage}
-                                                              addPostCallback={props.addPostCallback}
-                                                              updateNewPostText={props.updateNewPostText}/>}/>
+                                                              dispatch={props.dispatch}/>}/>
                 <Route path='/news'/>
                 <Route path='/music'/>
                 <Route path='/settings'/>
