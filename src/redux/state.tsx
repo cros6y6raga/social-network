@@ -1,5 +1,6 @@
 import React from 'react';
-
+const ADD_POST='ADD-POST'
+const CHANGE_NEW_TEXT='CHANGE-NEW-TEXT'
 export type PostType = {
     id: number
     message: string
@@ -50,14 +51,14 @@ export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof chan
 
 export const addPostAC=(postText:string)=>{
     return{
-        type:'ADD-POST',
+        type:ADD_POST,
         postText:postText
     } as const
 }
 
 export const changeNewTextAC=(newText:string)=>{
     return{
-        type:'CHANGE-NEW-TEXT',
+        type:CHANGE_NEW_TEXT,
         newText:newText
     } as const
 }
@@ -107,7 +108,7 @@ export const store: StoreType = {
     //     this._onChange()
     // },
     dispatch(action) {
-        if (action.type==='ADD-POST') {
+        if (action.type===ADD_POST) {
             const newPost: PostType = {
                 id: new Date().getTime(),
                 message: action.postText,
@@ -115,7 +116,7 @@ export const store: StoreType = {
             }
             this._state.profilePage.posts.push(newPost)
             this._onChange()
-        } else if (action.type==='CHANGE-NEW-TEXT'){
+        } else if (action.type===CHANGE_NEW_TEXT){
             this._state.profilePage.newPostText = action.newText
             this._onChange()
         }

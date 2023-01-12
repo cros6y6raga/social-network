@@ -1,7 +1,7 @@
 import React, {ChangeEvent, LegacyRef, useRef} from 'react';
 import s from './MyPosts.module.css'
 import {Post} from "./Post/Post";
-import {ActionsTypes, addPostAC, PostType} from "../../../redux/state";
+import {ActionsTypes, addPostAC, changeNewTextAC, PostType} from "../../../redux/state";
 
 type PropsType = {
     posts: PostType[]
@@ -18,7 +18,9 @@ export const MyPosts = (props: PropsType) => {
     }
 
     let onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch({type: 'CHANGE-NEW-TEXT', newText: e.currentTarget.value})
+        let action=changeNewTextAC(e.currentTarget.value)
+        props.dispatch(action)
+        // props.dispatch({type: 'CHANGE-NEW-TEXT', newText: e.currentTarget.value})
     }
     return (
         <div className={s.postsBlock}>
