@@ -1,7 +1,7 @@
 import React, {ChangeEvent, LegacyRef, useRef} from 'react';
 import s from './MyPosts.module.css'
 import {Post} from "./Post/Post";
-import {ActionsTypes, PostType} from "../../../redux/state";
+import {ActionsTypes, addPostAC, PostType} from "../../../redux/state";
 
 type PropsType = {
     posts: PostType[]
@@ -14,8 +14,7 @@ export const MyPosts = (props: PropsType) => {
 
     const addPost = () => {
         //props.addPostCallback(props.newPostText)
-        props.dispatch({type: 'ADD-POST', postText: props.newPostText})
-
+        props.dispatch(addPostAC(props.newPostText))
     }
 
     let onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
