@@ -3,6 +3,7 @@ import React from 'react';
 const ADD_POST = 'ADD-POST'
 const CHANGE_NEW_TEXT = 'CHANGE-NEW-TEXT'
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY'
+const SEND_MESSAGE = 'SEND_MESSAGE'
 export type PostType = {
     id: number
     message: string
@@ -27,12 +28,12 @@ export type ProfilePageType = {
 export type MessagesPageType = {
     messages: MessagesType[]
     dialogs: DialogsType[]
+    newMessageBody: string
 }
 
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: MessagesPageType
-    newMessageBody: string
 }
 
 export type StoreType = {
@@ -50,7 +51,11 @@ export type StoreType = {
 //     postText:string
 // }
 
-export type ActionsTypes = ReturnType<typeof addPostAC> | ReturnType<typeof changeNewTextAC>
+export type ActionsTypes =
+    ReturnType<typeof addPostAC> |
+    ReturnType<typeof changeNewTextAC> |
+    ReturnType<typeof updateNewMessageAC> |
+    ReturnType<typeof sendMessageAC>
 
 export const addPostAC = (postText: string) => {
     return {
@@ -63,6 +68,19 @@ export const changeNewTextAC = (newText: string) => {
     return {
         type: CHANGE_NEW_TEXT,
         newText: newText
+    } as const
+}
+
+export const updateNewMessageAC = (body: string) => {
+    return {
+        type: UPDATE_NEW_MESSAGE_BODY,
+        body: body
+    } as const
+}
+
+export const sendMessageAC = () => {
+    return {
+        type: SEND_MESSAGE,
     } as const
 }
 
@@ -86,8 +104,8 @@ export const store: StoreType = {
                 {id: 2, message: 'My name is angular'},
                 {id: 3, message: 'My name is vue'},
             ],
+            newMessageBody: ''
         },
-        newMessageBody: ''
     },
     _onChange() {
         console.log('state changed')
@@ -123,6 +141,14 @@ export const store: StoreType = {
             this._onChange()
         } else if (action.type === CHANGE_NEW_TEXT) {
             this._state.profilePage.newPostText = action.newText
+            this._onChange()
+        } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+            this._state.dialogsPage.newMessageBody = action.body
+            this._onChange()
+        } else if (action.type === SEND_MESSAGE) {
+            let body = this._state.dialogsPage.newMessageBody;
+            this._state.dialogsPage.newMessageBody = ''
+            this._state.dialogsPage.messages.push({id: 3, message: body});
             this._onChange()
         }
     },
