@@ -18,7 +18,7 @@ export const MyPosts = (props: PropsType) => {
     }
 
     let onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        let action=changeNewTextAC(e.currentTarget.value)
+        let action = changeNewTextAC(e.currentTarget.value)
         props.dispatch(action)
         // props.dispatch({type: 'CHANGE-NEW-TEXT', newText: e.currentTarget.value})
     }

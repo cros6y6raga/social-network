@@ -1,4 +1,6 @@
 import React from 'react';
+import {ProfileReducer} from "./profile-reducer";
+import {DialogsReducer} from "./dialogs-reducer";
 
 const ADD_POST = 'ADD-POST'
 const CHANGE_NEW_TEXT = 'CHANGE-NEW-TEXT'
@@ -130,6 +132,9 @@ export const store: StoreType = {
     //     this._onChange()
     // },
     dispatch(action) {
+        this._state.profilePage = ProfileReducer(this._state.profilePage,action)
+        this._state.dialogsPage = DialogsReducer(this._state.dialogsPage,action)
+        this._onChange()
         if (action.type === ADD_POST) {
             const newPost: PostType = {
                 id: new Date().getTime(),
