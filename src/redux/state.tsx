@@ -1,11 +1,12 @@
 import React from 'react';
-import {ProfileReducer} from "./profile-reducer";
-import {DialogsReducer} from "./dialogs-reducer";
+import {addPostAC, changeNewTextAC, ProfileReducer} from "./profile-reducer";
+import {DialogsReducer, sendMessageAC, updateNewMessageAC} from "./dialogs-reducer";
 
-const ADD_POST = 'ADD-POST'
-const CHANGE_NEW_TEXT = 'CHANGE-NEW-TEXT'
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY'
-const SEND_MESSAGE = 'SEND_MESSAGE'
+// const ADD_POST = 'ADD-POST'
+// const CHANGE_NEW_TEXT = 'CHANGE-NEW-TEXT'
+// const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY'
+// const SEND_MESSAGE = 'SEND_MESSAGE'
+
 export type PostType = {
     id: number
     message: string
@@ -59,32 +60,32 @@ export type ActionsTypes =
     ReturnType<typeof updateNewMessageAC> |
     ReturnType<typeof sendMessageAC>
 
-export const addPostAC = (postText: string) => {
-    return {
-        type: ADD_POST,
-        postText: postText
-    } as const
-}
-
-export const changeNewTextAC = (newText: string) => {
-    return {
-        type: CHANGE_NEW_TEXT,
-        newText: newText
-    } as const
-}
-
-export const updateNewMessageAC = (body: string) => {
-    return {
-        type: UPDATE_NEW_MESSAGE_BODY,
-        body: body
-    } as const
-}
-
-export const sendMessageAC = () => {
-    return {
-        type: SEND_MESSAGE,
-    } as const
-}
+// export const addPostAC = (postText: string) => {
+//     return {
+//         type: ADD_POST,
+//         postText: postText
+//     } as const
+// }
+//
+// export const changeNewTextAC = (newText: string) => {
+//     return {
+//         type: CHANGE_NEW_TEXT,
+//         newText: newText
+//     } as const
+// }
+//
+// export const updateNewMessageAC = (body: string) => {
+//     return {
+//         type: UPDATE_NEW_MESSAGE_BODY,
+//         body: body
+//     } as const
+// }
+//
+// export const sendMessageAC = () => {
+//     return {
+//         type: SEND_MESSAGE,
+//     } as const
+// }
 
 export const store: StoreType = {
     _state: {
