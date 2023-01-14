@@ -2,11 +2,6 @@ import React from 'react';
 import {addPostAC, changeNewTextAC, ProfileReducer} from "./profile-reducer";
 import {DialogsReducer, sendMessageAC, updateNewMessageAC} from "./dialogs-reducer";
 
-// const ADD_POST = 'ADD-POST'
-// const CHANGE_NEW_TEXT = 'CHANGE-NEW-TEXT'
-// const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY'
-// const SEND_MESSAGE = 'SEND_MESSAGE'
-
 export type PostType = {
     id: number
     message: string
@@ -42,50 +37,16 @@ export type RootStateType = {
 export type StoreType = {
     _state: RootStateType
     _onChange: () => void
-    // updateNewPostText: (newText: string) => void
-    // addPost: (postText: string) => void
     subscribe: (callback: () => void) => void
     getState: () => RootStateType
     dispatch: (action: ActionsTypes) => void
 }
-
-// type AddPostActionType={
-//     type:'ADD-POST'
-//     postText:string
-// }
 
 export type ActionsTypes =
     ReturnType<typeof addPostAC> |
     ReturnType<typeof changeNewTextAC> |
     ReturnType<typeof updateNewMessageAC> |
     ReturnType<typeof sendMessageAC>
-
-// export const addPostAC = (postText: string) => {
-//     return {
-//         type: ADD_POST,
-//         postText: postText
-//     } as const
-// }
-//
-// export const changeNewTextAC = (newText: string) => {
-//     return {
-//         type: CHANGE_NEW_TEXT,
-//         newText: newText
-//     } as const
-// }
-//
-// export const updateNewMessageAC = (body: string) => {
-//     return {
-//         type: UPDATE_NEW_MESSAGE_BODY,
-//         body: body
-//     } as const
-// }
-//
-// export const sendMessageAC = () => {
-//     return {
-//         type: SEND_MESSAGE,
-//     } as const
-// }
 
 export const store: StoreType = {
     _state: {
@@ -119,43 +80,9 @@ export const store: StoreType = {
     subscribe(callback) {
         this._onChange = callback
     },
-    // updateNewPostText(newText: string) {
-    //     this._state.profilePage.newPostText = newText
-    //     this._onChange()
-    // },
-    // addPost(postText: string) {
-    //     const newPost: PostType = {
-    //         id: new Date().getTime(),
-    //         message: postText,
-    //         likesCount: 0,
-    //     }
-    //     this._state.profilePage.posts.push(newPost)
-    //     this._onChange()
-    // },
     dispatch(action) {
-        this._state.profilePage = ProfileReducer(this._state.profilePage,action)
-        this._state.dialogsPage = DialogsReducer(this._state.dialogsPage,action)
+        this._state.profilePage = ProfileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = DialogsReducer(this._state.dialogsPage, action)
         this._onChange()
-        if (action.type === ADD_POST) {
-            const newPost: PostType = {
-                id: new Date().getTime(),
-                message: action.postText,
-                likesCount: 0,
-            }
-            this._state.profilePage.posts.push(newPost)
-            this._state.profilePage.newPostText = '';
-            this._onChange()
-        } else if (action.type === CHANGE_NEW_TEXT) {
-            this._state.profilePage.newPostText = action.newText
-            this._onChange()
-        } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-            this._state.dialogsPage.newMessageBody = action.body
-            this._onChange()
-        } else if (action.type === SEND_MESSAGE) {
-            let body = this._state.dialogsPage.newMessageBody;
-            this._state.dialogsPage.newMessageBody = ''
-            this._state.dialogsPage.messages.push({id: 3, message: body});
-            this._onChange()
-        }
     },
 }

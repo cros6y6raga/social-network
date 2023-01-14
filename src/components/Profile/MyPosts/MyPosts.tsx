@@ -1,4 +1,4 @@
-import React, {ChangeEvent, LegacyRef, useRef} from 'react';
+import React, {ChangeEvent} from 'react';
 import s from './MyPosts.module.css'
 import {Post} from "./Post/Post";
 import {ActionsTypes, PostType} from "../../../redux/state";
@@ -12,16 +12,12 @@ type PropsType = {
 
 export const MyPosts = (props: PropsType) => {
     let postsElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
-
     const addPost = () => {
-        //props.addPostCallback(props.newPostText)
         props.dispatch(addPostAC(props.newPostText))
     }
-
     let onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         let action = changeNewTextAC(e.currentTarget.value)
         props.dispatch(action)
-        // props.dispatch({type: 'CHANGE-NEW-TEXT', newText: e.currentTarget.value})
     }
     return (
         <div className={s.postsBlock}>

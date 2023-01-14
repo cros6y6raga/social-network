@@ -1,9 +1,5 @@
 import React from 'react';
-import {PostType, RootStateType} from "./state";
-
-// type PropsType={
-//     state:RootStateType
-// }
+import {PostType} from "./state";
 
 const ADD_POST = 'ADD-POST'
 const CHANGE_NEW_TEXT = 'CHANGE-NEW-TEXT'
@@ -26,6 +22,7 @@ export const ProfileReducer = (state: any, action: any) => {
             return state
     }
 };
+
 export const addPostAC = (postText: string) => {
     return {
         type: ADD_POST,
