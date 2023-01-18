@@ -2,7 +2,22 @@ import React from 'react';
 
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY'
 const SEND_MESSAGE = 'SEND_MESSAGE'
-export const DialogsReducer = (state: any, action: any) => {
+
+let initialState = {
+    dialogs: [
+        {id: 1, name: 'React'},
+        {id: 2, name: 'Angular'},
+        {id: 3, name: 'Vue'},
+    ],
+    messages: [
+        {id: 1, message: 'My name is react'},
+        {id: 2, message: 'My name is angular'},
+        {id: 3, message: 'My name is vue'},
+    ],
+    newMessageBody: ''
+}
+
+export const DialogsReducer = (state=initialState, action: any) => {
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_BODY:
             state.newMessageBody = action.body
