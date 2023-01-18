@@ -10,7 +10,7 @@ import {ActionsTypes, RootStateType, store, StoreType} from "./redux/store";
 type AppType = {
     state: RootStateType
     dispatch: (action: ActionsTypes) => void
-    store: StoreType
+    store: any
 }
 
 const App = (props: AppType) => {
