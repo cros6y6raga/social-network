@@ -5,8 +5,7 @@ import {ActionsTypes, ProfilePageType} from "../../redux/store";
 import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 
 type PropsProfile = {
-    profilePage: ProfilePageType
-    dispatch: (action: ActionsTypes) => void
+
     store: any
 }
 
