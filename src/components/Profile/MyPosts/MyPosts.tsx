@@ -5,19 +5,25 @@ import {ActionsTypes, PostType} from "../../../redux/store";
 import {addPostAC, changeNewTextAC} from "../../../redux/profile-reducer";
 
 type PropsType = {
-    posts: PostType[]
+    // posts: PostType[]
     newPostText: string
-    dispatch: (action: ActionsTypes) => void
+    // dispatch: (action: ActionsTypes) => void
+    updateNewPostText: (text: string) => void
+    addPost: () => void
 }
 
 export const MyPosts = (props: PropsType) => {
     let postsElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
     const addPost = () => {
-        props.dispatch(addPostAC(props.newPostText))
+        props.addPost()
+        // props.dispatch(addPostAC(props.newPostText))
     }
     let onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        let action = changeNewTextAC(e.currentTarget.value)
-        props.dispatch(action)
+        let text = e.currentTarget.value
+        // @ts-ignore
+        props.newPostText(text)
+        // let action = changeNewTextAC(e.currentTarget.value)
+        // props.dispatch(action)
     }
     return (
         <div className={s.postsBlock}>

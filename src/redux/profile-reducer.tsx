@@ -12,7 +12,7 @@ let initialState = {
     newPostText: ''
 }
 
-export const ProfileReducer = (state=initialState, action: any) => {
+export const ProfileReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case ADD_POST:
             const newPost: PostType = {
