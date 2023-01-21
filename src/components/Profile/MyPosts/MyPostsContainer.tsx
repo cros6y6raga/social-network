@@ -1,12 +1,8 @@
-import React, {ChangeEvent} from 'react';
-import {ActionsTypes, PostType} from "../../../redux/store";
+import React from 'react';
 import {addPostAC, changeNewTextAC} from "../../../redux/profile-reducer";
 import {MyPosts} from "./MyPosts";
 
 type PropsType = {
-    // posts: PostType[]
-    // newPostText: string
-    // dispatch: (action: ActionsTypes) => void
     store: any
 }
 
