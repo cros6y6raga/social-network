@@ -8,23 +8,24 @@ type PropsType = {
 }
 
 export const MyPostsContainer = (props: PropsType) => {
-    //let state = props.store.getState()
-    const addPost = () => {
-        props.store.dispatch(addPostAC(props.store.newPostText))
-    }
-    let onPostChange = (text: string) => {
-        let action = changeNewTextAC(text)
-        props.store.dispatch(action)
-    }
     return (
         <StoreContext.Consumer>
             {
-                (store) => (
-                    <MyPosts
+                (store) => {
+                    let state = props.store.getState()
+                    const addPost = () => {
+                        props.store.dispatch(addPostAC(props.store.newPostText))
+                    }
+                    let onPostChange = (text: string) => {
+                        let action = changeNewTextAC(text)
+                        props.store.dispatch(action)
+                    }
+                    return <MyPosts
                         updateNewPostText={onPostChange}
                         addPost={addPost}
-                        newPostText={store.getState().profilePage.newPostText}
-                        posts={store.getState().profilePage.posts}/>)
+                        newPostText={state.profilePage.newPostText}
+                        posts={state.profilePage.posts}/>
+                }
             }
         </StoreContext.Consumer>
     );
