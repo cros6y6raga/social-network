@@ -5,19 +5,19 @@ import {Dialogs} from "./Dialogs";
 import StoreContext from "../../StoreContext";
 
 type DialogStringType = {
-    store: StoreType
+    // store: StoreType
 }
 
 export const DialogsContainer = (props: DialogStringType) => {
-    let state = props.store.getState().dialogsPage
-    let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageAC())
-    }
-    let onNewMessageChange = (body: any) => {
-        props.store.dispatch(updateNewMessageAC(body))
-    }
     return <StoreContext.Consumer>
         {(store) => {
+            let state = store.getState().dialogsPage
+            let onSendMessageClick = () => {
+                store.dispatch(sendMessageAC())
+            }
+            let onNewMessageChange = (body: any) => {
+                store.dispatch(updateNewMessageAC(body))
+            }
             return <Dialogs
                 updateNewMessage={onNewMessageChange}
                 sendMessage={onSendMessageClick}

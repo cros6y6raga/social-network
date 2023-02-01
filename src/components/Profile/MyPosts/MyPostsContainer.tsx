@@ -12,13 +12,13 @@ export const MyPostsContainer = (props: PropsType) => {
         <StoreContext.Consumer>
             {
                 (store) => {
-                    let state = props.store.getState()
+                    let state = store.getState()
                     const addPost = () => {
-                        props.store.dispatch(addPostAC(props.store.newPostText))
+                        store.dispatch(addPostAC(props.store.newPostText))
                     }
                     let onPostChange = (text: string) => {
                         let action = changeNewTextAC(text)
-                        props.store.dispatch(action)
+                        store.dispatch(action)
                     }
                     return <MyPosts
                         updateNewPostText={onPostChange}
