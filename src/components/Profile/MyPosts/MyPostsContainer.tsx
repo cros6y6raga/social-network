@@ -4,7 +4,7 @@ import {MyPosts} from "./MyPosts";
 import StoreContext from "../../../StoreContext";
 
 type PropsType = {
-    store: any
+    // store: any
 }
 
 export const MyPostsContainer = (props: PropsType) => {
@@ -14,7 +14,7 @@ export const MyPostsContainer = (props: PropsType) => {
                 (store) => {
                     let state = store.getState()
                     const addPost = () => {
-                        store.dispatch(addPostAC(props.store.newPostText))
+                        store.dispatch(addPostAC(store._state.profilePage.newPostText))
                     }
                     let onPostChange = (text: string) => {
                         let action = changeNewTextAC(text)
