@@ -3,11 +3,7 @@ import {addPostAC, changeNewTextAC} from "../../../redux/profile-reducer";
 import {MyPosts} from "./MyPosts";
 import StoreContext from "../../../StoreContext";
 
-type PropsType = {
-    // store: any
-}
-
-export const MyPostsContainer = (props: PropsType) => {
+export const MyPostsContainer = () => {
     return (
         <StoreContext.Consumer>
             {

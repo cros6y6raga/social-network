@@ -4,16 +4,9 @@ import {Header} from "./components/Header/Header";
 import {Navbar} from "./components/Navbar/Navbar";
 import {Profile} from "./components/Profile/Profile";
 import {Route} from "react-router-dom";
-import {ActionsTypes, RootStateType} from "./redux/store";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 
-type AppType = {
-    // state: RootStateType
-    // dispatch: (action: ActionsTypes) => void
-    // store: any
-}
-
-const App = (props: AppType) => {
+const App = () => {
     return (
         <div className='app-wrapper'>
             <Header/>
