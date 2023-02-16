@@ -2,6 +2,7 @@ import React from 'react';
 import {sendMessageAC, updateNewMessageAC} from "../../redux/dialogs-reducer";
 import {Dialogs} from "./Dialogs";
 import {connect} from "react-redux";
+import {AppStateType} from "../../redux/redux-store";
 
 // export const DialogsContainer = () => {
 //     return <StoreContext.Consumer>
@@ -23,7 +24,7 @@ import {connect} from "react-redux";
 //     </StoreContext.Consumer>
 // };
 
-let mapStateToProps = (state: any) => {
+let mapStateToProps = (state: AppStateType) => {
     return {
         dialogsPage: state.dialogsPage
     }
