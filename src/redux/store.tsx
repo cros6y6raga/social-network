@@ -8,12 +8,12 @@ export type PostType = {
     likesCount: number
 }
 
-export type DialogsType = {
+ type DialogsType = {
     id: number
     name: string
 }
 
-export type MessagesType = {
+ type MessagesType = {
     id: number
     message: string
 }

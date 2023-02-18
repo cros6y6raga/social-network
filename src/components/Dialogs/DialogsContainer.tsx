@@ -24,13 +24,18 @@ import {AppStateType} from "../../redux/redux-store";
 //     </StoreContext.Consumer>
 // };
 
-let mapStateToProps = (state: AppStateType) => {
+
+// type MapStatePropsType={
+//     dialogsPage
+// }
+
+const mapStateToProps = (state: AppStateType) => {
     return {
         dialogsPage: state.dialogsPage
     }
 }
 
-let mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: any) => {
     return {
         updateNewMessage: () => {
             dispatch(sendMessageAC())
@@ -41,4 +46,5 @@ let mapDispatchToProps = (dispatch: any) => {
     }
 }
 
+// @ts-ignore
 export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
