@@ -12,10 +12,10 @@ const mapStateToProps = (state: AppStateType) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        updateNewMessage: () => {
+        sendMessage: () => {
             dispatch(sendMessageAC())
         },
-        sendMessage: (body: any) => {
+        updateNewMessage: (body: any) => {
             dispatch(updateNewMessageAC(body))
         }
     }

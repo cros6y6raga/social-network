@@ -12,8 +12,10 @@ type DialogStringType = {
 
 export const Dialogs = (props: DialogStringType) => {
     let state = props.dialogsPage
-    let dialogsElement = state.dialogs.map((d: { name: string; id: number; }) => <DialogItem name={d.name} id={d.id}/>)
+    let dialogsElement = state.dialogs.map((d: { name: string; id: number; }) => <DialogItem name={d.name} key={d.id}
+                                                                                             id={d.id}/>)
     let messagesElement = state.messages.map((m: { message: string; id: number; }) => <Message message={m.message}
+                                                                                               key={m.id}
                                                                                                id={m.id}/>)
     let newMessageBody = state.newMessageBody
     let onSendMessageClick = () => {
