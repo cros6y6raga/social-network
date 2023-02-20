@@ -8,12 +8,12 @@ export type PostType = {
     likesCount: number
 }
 
- type DialogsType = {
+type DialogsType = {
     id: number
     name: string
 }
 
- type MessagesType = {
+type MessagesType = {
     id: number
     message: string
 }
@@ -47,6 +47,24 @@ export type ActionsTypes =
     ReturnType<typeof changeNewTextAC> |
     ReturnType<typeof updateNewMessageAC> |
     ReturnType<typeof sendMessageAC>
+
+type FindUsersPage = {
+    users: Array<Users>
+}
+
+type Users = {
+    id: number
+    photoURL: string
+    followed: boolean
+    fullName: string
+    status: string
+    location: UsersLocation
+}
+
+export type UsersLocation = {
+    city: string
+    country: string
+}
 
 export const store: StoreType = {
     _state: {

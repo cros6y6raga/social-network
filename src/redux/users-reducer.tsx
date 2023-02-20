@@ -1,51 +1,60 @@
 import React from 'react';
+import {AppStateType} from "./redux-store";
+import {UsersLocation} from "./store";
 
-const FOLLOW = 'FOLLOW'
-const UNFOLLOW = 'UNFOLLOW'
 
-let initialState = {
-    users: [
-        {
-            id: 1,
-            followed: false,
-            fullName: 'Dmitry',
-            status: 'I am a boss',
-            location: {city: 'Voronezh', country: 'Russia'}
-        },
-        {
-            id: 1,
-            followed: false,
-            fullName: 'Artem',
-            status: 'I am a boss two',
-            location: {city: 'Moscow', country: 'Russia'}
-        },
-        {
-            id: 1,
-            followed: true,
-            fullName: 'Vladimir',
-            status: 'I am a boss tree',
-            location: {city: 'Perm', country: 'Russia'}
-        },
-        {
-            id: 1,
-            followed: true,
-            fullName: 'Alexandr',
-            status: 'I am a boss four',
-            location: {city: 'Ostrogozhsk', country: 'Russia'}
-        },
-    ]
+export type UserType = {
+    id: number
+    photoURL: string
+    followed: boolean
+    fullName: string
+    status: string
+    location: UsersLocation
 }
 
 
-const usersReducer = (state = initialState, action: { type: any; }) => {
+const initialState: InitialStateType = {
+    users: []
+}
+
+
+export type InitialStateType = {
+    users: Array<UserType>
+}
+
+export const usersReducer = (state: InitialStateType = initialState, action: any): InitialStateType => {
     switch (action.type) {
-        case FOLLOW:
-        case UNFOLLOW:
+        case 'FOLLOW':
+            return {
+                ...state,
+                users: state.users.map(u => {
+                    if (u.id === action.userId) {
+                        return {...u, followed: true}
+                    }
+                    return u
+                })
+            }
+        case 'UNFOLLOW':
+            return {
+                ...state,
+                users: state.users.map(u => {
+                    if (u.id === action.userId) {
+                        return {...u, followed: false}
+                    }
+                    return u
+                })
+            }
+        case 'SET_USERS':
+            return {
+                ...state,
+                users: [...state.users, ...action.users]
+            }
         default:
             return state
     }
 }
 
 
-export const followAC = (userId: any) => ({type: FOLLOW, userId})
-export const unfollowAC = (userId: any) => ({type: UNFOLLOW, userId})
+export const followAC = (userID: number) => ({type: 'FOLLOW', userID} as const)
+export const unfollowAC = (userID: number) => ({type: 'UNFOLLOW', userID} as const)
+export const setUsersAC = (users: Array<UserType>) => ({type: 'SET_USERS', users} as const)
