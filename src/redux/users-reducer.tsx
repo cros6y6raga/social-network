@@ -1,5 +1,4 @@
 import React from 'react';
-import {AppStateType} from "./redux-store";
 import {UsersLocation} from "./store";
 
 
