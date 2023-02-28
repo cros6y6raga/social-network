@@ -3,10 +3,11 @@ import {UsersLocation} from "./store";
 
 
 export type UserType = {
+    photos: any;
     id: number
     photoURL: string
     followed: boolean
-    fullName: string
+    name: string
     status: string
     location: UsersLocation
 }
