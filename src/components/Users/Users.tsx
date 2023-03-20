@@ -1,5 +1,5 @@
 import React from 'react';
-import {MapStatePropsType, UsersPropsType} from "./UsersContainer";
+import {UsersPropsType} from "./UsersContainer";
 import styles from './users.module.css'
 import axios from "axios";
 import userPhoto from '../../assets/images/user.png'
@@ -12,10 +12,23 @@ export class Users extends React.Component<UsersPropsType> {
     }
 
     render() {
+        // @ts-ignore
+        let pagesCount = this.props.totalUsersCount / this.props.pageSize;
+        let pages = [];
+        for (let i = 0; i <= pagesCount; i++) {
+            pages.push(i)
+        }
         return (
             <div>
                 <div>
-                    <span>1</span>
+                    {pages.map((p) => {
+                        // @ts-ignore
+                        // @ts-ignore
+                        return (
+                            <div></div>
+                            // <span className={this.props.currentPage === p && styles.selectedPage}>{p}</span>
+                        )
+                    })}
                     <span className={styles.selectedPage}>2</span>
                     <span>3</span>
                     <span>4</span>
