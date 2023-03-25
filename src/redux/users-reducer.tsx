@@ -17,15 +17,15 @@ const initialState: InitialStateType = {
     users: [],
     pageSize: 5,
     totalUsersCount: 10,
-    currentPage:3
+    currentPage: 2
 }
 
 
 export type InitialStateType = {
     users: Array<UserType>
-    pageSize:number,
-    totalUsersCount:number,
-    currentPage:number
+    pageSize: number,
+    totalUsersCount: number,
+    currentPage: number
 }
 
 export const usersReducer = (state: InitialStateType = initialState, action: any): InitialStateType => {
