@@ -21,12 +21,10 @@ export class Users extends React.Component<UsersPropsType> {
         return (
             <div>
                 <div>
-                    {pages.map((p) => {
-                        // @ts-ignore
-                        // @ts-ignore
+                    {pages.map(p => {
                         return (
-                            <div></div>
-                            // <span className={this.props.currentPage === p && styles.selectedPage}>{p}</span>
+                            <span
+                                className={this.props.usersPage.currentPage === p ? styles.selectedPage : ''}>{p}</span>
                         )
                     })}
                     <span className={styles.selectedPage}>2</span>
